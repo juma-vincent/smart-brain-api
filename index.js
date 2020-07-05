@@ -17,11 +17,6 @@ const db = knex({
   },
 });
 
-const checkUserAuth = (req, res, next) => {
-  if (req.session.user) return next();
-  return next(new NotAuthorizedError());
-};
-
 app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -30,7 +25,7 @@ app.get("/", (req, res) => {
   res.json("This is working");
 });
 
-app.post("/register", checkUserAuth, (req, res) => {
+app.post("/register", (req, res) => {
   register.handleRegister(req, res, db, bcrypt);
 });
 

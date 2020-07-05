@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   res.json("This is working");
 });
 
-app.post("/", (req, res) => {
+app.post("/register", (req, res) => {
   register.handleRegister(req, res, db, bcrypt);
 });
 

@@ -20,11 +20,6 @@ const db = knex({
 app = express();
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static(__dirname));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "index.html"));
-});
 
 app.get("/", (req, res) => {
   res.json("This is working");

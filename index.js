@@ -25,7 +25,9 @@ app.get("/", (req, res) => {
   res.json("This is working");
 });
 
-app.post({ url: "/register", rejectUnhauthorized: false }, (req, res) => {
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
+app.post("/register", (req, res) => {
   register.handleRegister(req, res, db, bcrypt);
 });
 
